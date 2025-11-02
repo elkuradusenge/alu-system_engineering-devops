@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+PRIVATE_KEY="school"
+PPHRASE="betty"
+BITS=4096
+
+ssh-keygen -t rsa -b $BITS -f $PRIVATE_KEY -N $PPHRASE
+
+if [[ -f $PRIVATE_KEY && $(file $PRIVATE_KEY) == *"OpenSSH"* ]]; then
+    echo "$PRIVATE_KEY: OpenSSH private key"
+else
+    echo "$PRIVATE_KEY: Something went wrong"
+fi
